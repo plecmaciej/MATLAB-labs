@@ -1,0 +1,4 @@
+Wyniki i wnioski dla zadania 6:
+Norma błędu rezydualnego (metoda bezpośrednia): 7.064541e-13
+Norma błędu rezydualnego (metoda Jacobiego): NaN
+Norma błędu rezydualnego (metoda Gaussa-Seidla): 64367347963.391129
