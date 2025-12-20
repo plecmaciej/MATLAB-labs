@@ -65,7 +65,7 @@ This part focuses on computing the **PageRank vector** for a given directed grap
 ├── main.m - Script executing all tasks  
 └── *.png - Generated plots  
 
-# Numerical Methods – Laboratory 3  
+# Laboratory 3  
 **Direct and Iterative Methods for Solving Linear Systems**
 
 This laboratory focuses on the analysis and implementation of **direct** and **iterative** methods for solving systems of linear equations.  
@@ -173,3 +173,132 @@ Three solution approaches are applied:
 For each method, the **residual norm** is evaluated and the convergence behavior is analyzed.  
 The conclusions and observations are stored in the file:
 zadanie6.txt
+
+# Laboratory 4  
+**Numerical Solution of Nonlinear Equations**
+
+This laboratory focuses on numerical methods for finding solutions of **nonlinear equations**.  
+Two classical root-finding algorithms are analyzed and implemented:
+
+- **Bisection method**
+- **Secant method**
+
+During laboratory evaluation, both **theoretical understanding** and **code implementation** are assessed.
+
+---
+
+## Laboratory Objectives
+
+The main goals of this laboratory are:
+- to understand numerical root-finding techniques for nonlinear equations,
+- to implement and compare the **bisection** and **secant** methods,
+- to analyze convergence properties and stopping criteria,
+- to use MATLAB’s built-in function `fzero` for root finding.
+
+---
+
+## Tasks Overview
+
+The laboratory consists of **nine tasks**:
+
+- **Tasks 1–8** – implemented and verified using **MATLAB Grader**,
+- **Task 9** – evaluated outside MATLAB Grader and requiring written analysis.
+
+Correctness of the plotted data is required to maintain the score obtained in MATLAB Grader.
+
+---
+
+## Numerical Methods
+
+### Bisection Method
+
+The bisection method is a robust root-finding algorithm that requires an initial interval `[a, b]` such that: f(a) · f(b) < 0
+
+At each iteration, the interval is divided in half and the subinterval containing the root is selected.
+
+**Implementation details (related to code):**
+- implemented in `bisection_method.m`,
+- supports user-defined tolerance and maximum number of iterations,
+- stores successive approximations (`xtab`) and differences between iterations (`xdif`) for convergence analysis.
+
+
+---
+
+### Secant Method
+
+The secant method is an iterative algorithm that approximates the derivative using two previous points.
+
+**Implementation details (related to code):**
+- implemented in `secant_method.m`,
+- uses two initial guesses `a` and `b`,
+- stores intermediate approximations and iteration differences.
+
+Compared to bisection, the secant method usually converges faster but may be less stable.
+
+---
+
+## Problem-Specific Functions
+
+Several nonlinear problems are solved using the implemented methods:
+
+### Impedance Magnitude
+
+The function `impedance_magnitude(omega)` computes the difference between the impedance magnitude of an RLC circuit and a target value.
+
+**Related scripts:**
+- `impedance_magnitude.m`
+- used in Tasks 1–4
+- root corresponds to the angular frequency `omega` for which the impedance magnitude reaches the desired value.
+
+---
+
+### Rocket Velocity Model
+
+The function `rocket_velocity(t)` describes the velocity of a rocket as a function of time and compares it with a target velocity.
+
+**Related scripts:**
+- `rocket_velocity.m`
+- used in Tasks 5–6
+- root corresponds to the time at which the rocket reaches the required velocity.
+
+---
+
+### Execution Time Estimation
+
+The function `estimate_execution_time(N)` models the difference between estimated algorithm execution time and a reference time.
+
+**Related scripts:**
+- `estimate_execution_time.m`
+- used in Tasks 7–8
+- root corresponds to the number of input parameters `N` for which the estimated execution time equals the reference time.
+
+---
+
+## Convergence Analysis and Visualization
+
+For selected tasks, convergence behavior is analyzed using:
+- successive approximations of the root,
+- logarithmic plots of differences between iterations.
+
+**Generated plots:**
+- comparison of bisection and secant convergence,
+- saved as `.png` files (Tasks 4, 6, and 8).
+
+---
+
+## Task 9 – Root Finding with `fzero`
+
+In Task 9, MATLAB’s built-in function `fzero` is used to find the zeros of the function: tan(x)
+
+The analysis is performed using two different initial guesses:
+- `x0 = 6.0`
+- `x0 = 4.5`
+
+To generate a detailed iteration report, the function is called with additional options:
+
+```matlab
+options = optimset('Display','iter');
+fzero(@tan, 6.0, options)
+```
+The interpretation of the results and the comparison of both obtained solutions are saved in the file: zadanie9.txt
+
